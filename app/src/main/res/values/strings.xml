@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NewsApp</string>
+    <string name="tagline">"Turn Experiences\n "into Actionable\n "Results"</string>
 </resources>
