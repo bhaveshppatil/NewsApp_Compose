@@ -24,10 +24,21 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+            buildConfigField(
+                "String",
+                "NEWS_BASE_URL",
+                "\"https://candidate-test-data-moengage.s3.amazonaws.com/\""
+            )
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
+        }
+
+        debug {
+            isDebuggable = true
+            buildConfigField("String", "NEWS_BASE_URL", "\"https://debug.example.com/\"")
         }
     }
     compileOptions {
@@ -39,6 +50,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"

@@ -8,8 +8,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.moengage.newsapp.model.Article
-import com.moengage.newsapp.remote.NetworkMonitor
-import com.moengage.newsapp.remote.Result
+import com.moengage.newsapp.remote.helpers.NetworkMonitor
+import com.moengage.newsapp.remote.helpers.Result
 import com.moengage.newsapp.ui.repository.NewsRepository
 import com.moengage.newsapp.utils.Constants.INTERNET_NOT_FOUND_STATUS_CODE
 import com.moengage.newsapp.utils.Constants.NO_INTERNET_ERROR
@@ -105,7 +105,6 @@ class NewsViewModel(app: Application) : AndroidViewModel(app), DIAware {
                     }
                 }
 
-                Log.d("FilteredList", sortedFilteredArticles.toString())
                 _newsLiveData.postValue(Resource.success(sortedFilteredArticles))
             }
     }

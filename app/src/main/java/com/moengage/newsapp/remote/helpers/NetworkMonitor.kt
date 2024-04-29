@@ -1,4 +1,4 @@
-package com.moengage.newsapp.remote
+package com.moengage.newsapp.remote.helpers
 
 import com.moengage.newsapp.utils.Constants.NO_INTERNET_ERROR
 import kotlinx.coroutines.flow.Flow

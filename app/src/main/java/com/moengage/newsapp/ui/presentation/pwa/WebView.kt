@@ -22,13 +22,10 @@ fun NewsWebView(
 
     var backEnabled by remember { mutableStateOf(false) }
     var webView: WebView? = null
-    val context = LocalContext.current
     BackPressHandler(onBackPressed = {
         onBackPressed.invoke()
     })
 
-    // Adding a WebView inside AndroidView
-    // with layout as full screen
     AndroidView(
         factory = {
             WebView(it).apply {

@@ -1,4 +1,4 @@
-package com.moengage.newsapp.remote
+package com.moengage.newsapp.remote.helpers
 
 
 import retrofit2.HttpException

@@ -1,7 +1,5 @@
 package com.moengage.newsapp.remote.helpers
 
-import com.moengage.newsapp.remote.NetworkMonitor
-import com.moengage.newsapp.remote.NoInternetException
 import okhttp3.Interceptor
 import okhttp3.Response
 

@@ -1,4 +1,4 @@
-package com.moengage.newsapp.remote
+package com.moengage.newsapp.remote.helpers
 
 const val DEFAULT_ERROR_MESSAGE = "Something went wrong"
 

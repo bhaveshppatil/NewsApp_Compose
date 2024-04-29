@@ -1,7 +1,7 @@
 package com.moengage.newsapp.di
 
-import com.moengage.newsapp.remote.MockNetwork
-import com.moengage.newsapp.remote.NetworkMonitor
+import com.moengage.newsapp.remote.helpers.MockNetwork
+import com.moengage.newsapp.remote.helpers.NetworkMonitor
 import com.moengage.newsapp.remote.NewsRepositoryImpl
 import com.moengage.newsapp.ui.repository.NewsRepository
 import com.moengage.newsapp.ui.viewmodel.NewsViewModel

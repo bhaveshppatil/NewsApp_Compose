@@ -2,25 +2,21 @@ package com.moengage.newsapp.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.moengage.newsapp.remote.NetworkMonitor
+import com.moengage.newsapp.BuildConfig
 import com.moengage.newsapp.remote.NewsApiService
-import com.moengage.newsapp.remote.SafeApiRequest
 import com.moengage.newsapp.remote.helpers.NetworkInterceptor
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
+import com.moengage.newsapp.remote.helpers.NetworkMonitor
+import com.moengage.newsapp.remote.helpers.SafeApiRequest
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.kodein.di.DI
 import org.kodein.di.bindSingleton
 import org.kodein.di.instance
-import org.koin.android.BuildConfig
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-private const val BASE_URL = "https://candidate-test-data-moengage.s3.amazonaws.com/"
 
 val networkModule = DI.Module("network") {
     bindSingleton { provideLoggingInterceptor() }
@@ -28,7 +24,7 @@ val networkModule = DI.Module("network") {
     bindSingleton { provideGsonConverterFactory(instance()) }
     bindSingleton { provideOkHttpClient(instance(), instance()) }
     bindSingleton { SafeApiRequest(instance()) }
-    bindSingleton { provideRetrofit(instance(), instance(), BASE_URL) }
+    bindSingleton { provideRetrofit(instance(), instance(), BuildConfig.NEWS_BASE_URL) }
     bindSingleton { provideNewsApiService(instance()) }
     bindSingleton { provideNetworkInterceptor(instance()) }
 
@@ -39,6 +35,7 @@ fun provideNewsApiService(retrofit: Retrofit): NewsApiService =
 
 private fun provideLoggingInterceptor() =
     HttpLoggingInterceptor().setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
+
 fun provideNetworkInterceptor(networkMonitor: NetworkMonitor) = NetworkInterceptor(networkMonitor)
 
 fun provideOkHttpClient(

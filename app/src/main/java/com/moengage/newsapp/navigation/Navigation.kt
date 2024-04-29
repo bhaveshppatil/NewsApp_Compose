@@ -30,7 +30,8 @@ fun Navigation(
 
     NavHost(navController = navController, startDestination = Screen.Splash.route) {
         composable(route = Screen.Splash.route) {
-            SplashScreen(onLetsGoClicked = {
+            SplashScreen(
+                onLetsGoClicked = {
                 viewModel.getListOfNewsData()
                 navController.navigate(Screen.MainScreen.route) {
                     launchSingleTop = true
@@ -46,8 +47,8 @@ fun Navigation(
             val isLoading = listOfNewsResource?.status == Status.LOADING
 
             NewsScreen(
-                navController = navController,
                 listOfArticles = listOfNewsData,
+                isLoading = isLoading,
                 onOlderToNewerFilterApply = {
                     viewModel.filterArticlesByDate(
                         listOfNewsData,
